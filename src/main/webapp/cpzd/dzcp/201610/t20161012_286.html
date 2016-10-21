@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="cn">
+<head>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<h1 style="display:none" class="nav_hide">产品详情</h1>
+<title>产品详情</title>
+
+<script type="text/javascript" src="../../JS/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+$("#b05").click(function(){
+	 $.getJSON("http://localhost:8080/hello/get",
+	 {"reviewName":$("#b05_1").attr("value")},   //向后台传递参数  商品的名称！！！
+	 function(data) {
+		 $("#b06_1").val("");
+		 $.each(data, function(i, item) {
+            $("#myDiv5").append(
+		 "<div>游客" + (i+1) + "</div>" + 
+                    "<div>" + item.reviewContent+ "</div><hr/>");
+        });
+        });
+   });
+
+$("#b06").click(function(){
+	 $.getJSON("http://localhost:8080/hello/save",
+	 {reviewName:$("#b05_1").attr("value"),reviewContent:$("input[id='b06_1']").val()},   //向后台传递参数  商品的名称,商品评价！！！！
+	 function(data) {
+		 $("#b06_1").val("");
+		 $.each(data, function(i, item) {
+           
+        });
+        });
+   });
+
+})
+</script>
+
+</head>
+
+<body>
+
+
+<div style="margin:0 auto; width:950px;">
+
+
+ <img src='./W020161012619003371683.jpg' border=0 alt="图片不存在！" width="80" height="80" /> 
+  <br/>
+
+
+<h2>显示商品详情：</h2>
+
+
+
+<div style="margin:0 auto; width:950px;">
+<p style="text-indent:2em;">
+	<h1>
+		<span style="color:#000000;font-family:SimSun;">&nbsp;&nbsp;电视机详情</span><br/>
+		<span style="color:#000000;font-family:SimSun;">&nbsp;&nbsp;￥ 2340</span>
+	</h1>
+</p>
+</div>
+
+
+
+<br/>
+
+<!--使用JS解析JSON数据-->
+<div id="myDiv5"><h2>显示评论</h2></div>
+<input id="b05_1" type="hidden" name="content" title="Review Content" value="电视机" /><br/>
+<button id="b05" type="button">显示更多评论</button><br/>
+
+   请填写评论：<input id="b06_1" type="text" name="text" title="Review Content" />
+<button id="b06" type="button">提交评论：</button> 
+
+</div>
+
+</body>
+</html>

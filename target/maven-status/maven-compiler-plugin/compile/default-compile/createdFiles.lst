@@ -1,0 +1,7 @@
+com\trs\dao\ReviewDao$1.class
+com\trs\service\ReviewService.class
+com\trs\ServletInitializer.class
+com\trs\controller\TestController.class
+com\trs\App.class
+com\trs\domain\Review.class
+com\trs\dao\ReviewDao.class
